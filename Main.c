@@ -49,6 +49,7 @@ int list_add(struct LinkedList * list, int value)
 		list->head = node;
 	}
 
+	return 0;
 }
 
 int main() {
