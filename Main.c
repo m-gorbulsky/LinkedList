@@ -1,5 +1,5 @@
 #include <stdlib.h>
-
+#include <stdio.h>
 
 
 typedef struct Node
@@ -14,22 +14,23 @@ typedef struct LinkedList
 	struct Node * head;
 };
 
-struct LinkedList * list_new()
+struct LinkedList* list_new()
 {
-	struct LinkedList * list;
-	list = malloc(sizeof(struct LinkedList));
+	struct LinkedList* list;
+	list = (struct LinkedList*)malloc(sizeof(struct LinkedList));
 	list->head = NULL;
 	return list;
 }
 
-int list_add(struct LinkedList * list, int value)
+int list_add(struct LinkedList* list, int value)
 {
 	if (list == NULL)
 	{
 		return 1;
 	}
 
-	struct Node * node = malloc(sizeof(struct Node));
+	struct Node * node;
+	node = (struct Node*)malloc(sizeof(struct Node));
 	node->value = value;
 	node->next = NULL;
 	node->prev = NULL;
@@ -55,10 +56,22 @@ int list_add(struct LinkedList * list, int value)
 int main() {
 	
 	// test list creation
-	struct LinledList * list = list_new();
+	struct LinkedList* list = list_new();
 	
 	// test list_add
-	list_add(list, 10);
+	list_add(list, 1);
+	list_add(list, 2);
+
+	// print all the values from the head backwords
+	struct Node * node;
+	node = list->head;
+	while (node != NULL)
+	{
+		printf("%d ", node->value);
+		node = node->prev;
+	}
+
+	getchar();
 
 	return 0;
 
