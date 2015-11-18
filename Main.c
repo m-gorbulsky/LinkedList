@@ -1,36 +1,38 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
-typedef struct Node
+// NodeType and LinkedListType defined using differnt syntaxis
+struct Node
 {
 	int value;
 	struct Node *prev;
 	struct Node *next;
 };
 
+typedef struct Node NodeType;
+
 typedef struct LinkedList
 {
-	struct Node * head;
-};
+	NodeType* head;
+} LinkedListType;
 
-struct LinkedList* list_new()
+LinkedListType* list_new()
 {
-	struct LinkedList* list;
-	list = (struct LinkedList*)malloc(sizeof(struct LinkedList));
+	LinkedListType* list;
+	list = (LinkedListType*)malloc(sizeof(LinkedListType));
 	list->head = NULL;
 	return list;
-}
+};
 
-int list_add(struct LinkedList* list, int value)
+int list_add(LinkedListType* list, int value)
 {
 	if (list == NULL)
 	{
 		return 1;
 	}
 
-	struct Node * node;
-	node = (struct Node*)malloc(sizeof(struct Node));
+	NodeType * node;
+	node = (NodeType*)malloc(sizeof(NodeType));
 	node->value = value;
 	node->next = NULL;
 	node->prev = NULL;
@@ -56,7 +58,7 @@ int list_add(struct LinkedList* list, int value)
 int main() {
 	
 	// test list creation
-	struct LinkedList* list = list_new();
+	LinkedListType* list = list_new();
 	
 	// test list_add
 	list_add(list, 1);
