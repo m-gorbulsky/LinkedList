@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
+// NodeType and LinkedListType defined using differnt syntaxis
 struct Node
 {
 	int value;
